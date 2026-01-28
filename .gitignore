@@ -1,0 +1,11 @@
+# Python junk
+__pycache__/
+*.pyc
+
+# gRPC Generated files (We keep the .proto, but generate these locally)
+generated/
+
+# Virtual Environments
+.venv/
+venv/
+env/
