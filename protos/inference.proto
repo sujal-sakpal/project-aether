@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package aether;
+
+// This service is a phoneline
+service InferenceService {
+    rpc ComputeStep (InferenceRequest) returns (InferenceResponse);
+}
+
+// This is send to the worker to compute a step
+message InferenceRequest{
+    string request_id = 1;
+    repeated TensorData input_tensors = 2;
+}
+
+// This is sent back to the client 
+message InferenceResponse{
+    string request_id = 1;
+    repeated TensorData output_tensors = 2;
+}
+
+// This is the way to represent numpy array in protobuf
+message TensorData{
+    bytes raw_data = 1;
+    repeated int32 shape = 2;
+    string dtype = 3;
+}
