@@ -16,8 +16,8 @@ def numpy_to_tensor_proto(arr: np.ndarray) -> inference_pb2.TensorData:
 
 def tensor_proto_to_numpy(proto_list) -> np.ndarray:
     """Unpacks the FIRST suitcase from a REPEATED list of TensorData."""
-    # Since output_tensors is a 'repeated' field, it is a list.
-    # We grab the first one [0] to get the actual TensorData object.
+    # This is where your error came from. 
+    # If the worker didn't send a list, this [0] fails.
     first_suitcase = proto_list[0] 
     
     return np.frombuffer(
