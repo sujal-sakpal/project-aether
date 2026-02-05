@@ -5,6 +5,9 @@ package aether;
 // This service is a phoneline
 service InferenceService {
     rpc ComputeStep (InferenceRequest) returns (InferenceResponse);
+
+    // new command to clear cache
+    rpc ClearCache (CacheRequest) returns (CacheResponse);
 }
 
 // This is send to the worker to compute a step
@@ -24,4 +27,14 @@ message TensorData{
     bytes raw_data = 1;
     repeated int32 shape = 2;
     string dtype = 3;
+}
+
+message CacheRequest{
+    string request_id = 1;
+}
+
+message CacheResponse{
+    bool success = 1;
+    string request_id = 2;
+    string message = 3;
 }
