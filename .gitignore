@@ -2,6 +2,9 @@
 __pycache__/
 *.pyc
 
+#weights
+weights/
+
 # gRPC Generated files (We keep the .proto, but generate these locally)
 generated/
 
